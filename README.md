@@ -2,7 +2,7 @@
 
 **Zero-alloc F# OpenType shaping & SDF layout engine — built for Wasm-GC.**
 
-[![CI](https://github.com/aiqs4/fsharp-glyph-auro/actions/workflows/ci.yml/badge.svg)](https://github.com/aiqs4/fsharp-glyph-auro/actions/workflows/ci.yml)
+[![CI](https://github.com/fsharp-wasm/fsharp-glyph-aura/actions/workflows/ci.yml/badge.svg)](https://github.com/fsharp-wasm/fsharp-glyph-aura/actions/workflows/ci.yml)
 [![NuGet](https://img.shields.io/nuget/v/GlyphAura.svg)](https://www.nuget.org/packages/GlyphAura)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 

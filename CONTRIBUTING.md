@@ -18,8 +18,8 @@ Be respectful. We follow the [Contributor Covenant](https://www.contributor-cove
 ### Build & Test
 
 ```bash
-git clone https://github.com/aiqs4/fsharp-glyph-auro.git
-cd fsharp-glyph-auro
+git clone https://github.com/fsharp-wasm/fsharp-glyph-aura.git
+cd fsharp-glyph-aura
 
 dotnet build
 dotnet test tests/GlyphAura.Tests/GlyphAura.Tests.fsproj --verbosity normal
@@ -74,7 +74,7 @@ demo/GlyphAura.Demo/    — Console ASCII-art rendering demo
 
 ## Reporting Issues
 
-Use [GitHub Issues](https://github.com/aiqs4/fsharp-glyph-auro/issues). Please include:
+Use [GitHub Issues](https://github.com/fsharp-wasm/fsharp-glyph-aura/issues). Please include:
 
 - Operating system and .NET version (`dotnet --version`)
 - A minimal reproducer font + code snippet

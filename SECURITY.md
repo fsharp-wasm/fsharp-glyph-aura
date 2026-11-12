@@ -10,7 +10,7 @@
 
 **Do not open a public GitHub Issue for security vulnerabilities.**
 
-Please use [GitHub's private vulnerability reporting](https://github.com/aiqs4/fsharp-glyph-auro/security/advisories/new)
+Please use [GitHub's private vulnerability reporting](https://github.com/fsharp-wasm/fsharp-glyph-aura/security/advisories/new)
 or email `security@glyph-auro.dev` with:
 
 1. A description of the vulnerability.
