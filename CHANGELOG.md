@@ -57,7 +57,7 @@ Versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - **`Shaper`** – Simple Latin shaper (Mode A). Width-constrained `shapeLine` returns
   `ShapeResult` with `GlyphCount`, `TotalAdvance`, and `LastFitIndex`.
 
-[Unreleased]: https://github.com/aiqs4/fsharp-glyph-auro/compare/v0.3.0...HEAD
-[0.3.0]: https://github.com/aiqs4/fsharp-glyph-auro/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/aiqs4/fsharp-glyph-auro/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/aiqs4/fsharp-glyph-auro/releases/tag/v0.1.0
+[Unreleased]: https://github.com/fsharp-wasm/fsharp-glyph-aura/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/fsharp-wasm/fsharp-glyph-aura/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/fsharp-wasm/fsharp-glyph-aura/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/fsharp-wasm/fsharp-glyph-aura/releases/tag/v0.1.0

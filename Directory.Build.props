@@ -5,7 +5,7 @@
     <Company>Glyph-Auro</Company>
     <Product>GlyphAura</Product>
     <Copyright>Copyright © 2025 Glyph-Auro Contributors</Copyright>
-    <RepositoryUrl>https://github.com/aiqs4/fsharp-glyph-auro</RepositoryUrl>
+    <RepositoryUrl>https://github.com/fsharp-wasm/fsharp-glyph-aura</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
