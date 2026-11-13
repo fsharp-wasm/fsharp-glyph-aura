@@ -26,5 +26,5 @@ What actually happened. Include stack traces or error messages.
 
 - OS: 
 - .NET version (`dotnet --version`): 
-- GlyphAuro version: 
+- GlyphAura version: 
 - Font file (if relevant): 
