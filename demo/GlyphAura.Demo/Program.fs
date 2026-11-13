@@ -206,7 +206,7 @@ let main _ =
     printfn "   ╚═════╝ ╚══════╝╚═╝   ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ "
     printfn ""
     printfn "  F# OpenType Shaping & SDF Layout Engine — Demo"
-    printfn "  Version 0.3.0 | MIT License"
+    printfn "  Version 0.3.0 | Apache-2.0 License"
     printfn ""
 
     match tryLoadFont() with

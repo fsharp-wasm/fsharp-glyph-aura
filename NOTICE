@@ -1,0 +1,9 @@
+GlyphAura
+Copyright 2025-2026 The GlyphAura contributors
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).  Versions of this repository before the change of licence were
+published under the MIT License.
+
+Third-party components that keep their own licences:
+  tests/GlyphAura.Tests/TestData/DejaVuSans.ttf   DejaVu Fonts (Bitstream Vera and Arev licences; a free licence that
+                                                   allows redistribution) — test data only, not part of any package

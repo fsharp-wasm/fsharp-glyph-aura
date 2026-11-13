@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/fsharp-wasm/fsharp-glyph-aura/actions/workflows/ci.yml/badge.svg)](https://github.com/fsharp-wasm/fsharp-glyph-aura/actions/workflows/ci.yml)
 [![NuGet](https://img.shields.io/nuget/v/GlyphAura.svg)](https://www.nuget.org/packages/GlyphAura)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
 GlyphAura is a self-contained F# library that reads a `.ttf` or `.otf` file and
 produces positioned `GlyphPosition` arrays ready for a renderer — with zero heap
@@ -400,4 +400,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). PRs welcome — please add tests.
 
 ## License
 
-[MIT](LICENSE) — Copyright © 2025 GlyphAura Contributors
+[Apache License 2.0](LICENSE) — Copyright 2025–2026 The GlyphAura contributors; see [NOTICE](NOTICE)
