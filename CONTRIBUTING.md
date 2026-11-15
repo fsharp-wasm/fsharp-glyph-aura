@@ -82,8 +82,8 @@ Use [GitHub Issues](https://github.com/fsharp-wasm/fsharp-glyph-aura/issues). Pl
 
 ## Security
 
-Do **not** open a public GitHub Issue for security vulnerabilities. Email
-`security@glyph-auro.dev` instead (or use GitHub's private advisory reporting).
+Do **not** open a public GitHub Issue for security vulnerabilities. Use
+[GitHub's private advisory reporting](https://github.com/fsharp-wasm/fsharp-glyph-aura/security/advisories/new) instead.
 
 ## License
 
