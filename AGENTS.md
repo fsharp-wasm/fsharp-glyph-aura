@@ -4,7 +4,7 @@ How we work is written down once, in the compiler repository: **https://github.c
 
 - **The compiler comes first**: a fault found while building on the stack is fixed in the compiler (fsharp-wasm), never worked around here; this repository is written the natural way.
 - Work on `develop`; `main` only by fast-forward after green CI; never rewrite pushed history.
-- Author and committer **Sascha Dewald <sascha.dewald@gmail.com>**, with the `Co-Authored-By` trailer.
+- Author and committer **Sascha Dewald** (his git identity; the e-mail address is not written into any file), with the `Co-Authored-By` trailer.
 - Do not write it twice: look for what exists in a lower layer first.
 - Claims are measured and dated; answers to the maintainer are in German; code, comments and commits in English.
 - Nothing outward-facing (deploy, release, pull request, issue) without his go.
