@@ -1,5 +1,9 @@
 # GlyphAura
 
+<!-- platform -->
+> **Part of the [fsharp-wasm platform](https://fsharp-wasm.github.io/projects/)**: graphics and text. Builds on nothing of ours. Used by [graphics](https://github.com/fsharp-wasm/fsharp-wasm-graphics).
+> [All projects](https://fsharp-wasm.github.io/projects/) · [Roadmap](https://fsharp-wasm.github.io/docs/roadmap/) · [Tests](https://fsharp-wasm.github.io/tests/) · [Benchmarks](https://fsharp-wasm.github.io/benchmarks/) · [Live demos](https://fsharp-wasm.github.io/demos/)
+
 **Zero-alloc F# OpenType shaping & SDF layout engine — built for Wasm-GC.**
 
 [![CI](https://github.com/fsharp-wasm/fsharp-glyph-aura/actions/workflows/ci.yml/badge.svg)](https://github.com/fsharp-wasm/fsharp-glyph-aura/actions/workflows/ci.yml)
