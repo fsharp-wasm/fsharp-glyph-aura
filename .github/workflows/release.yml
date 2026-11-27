@@ -1,54 +1,71 @@
 name: Release
 
+# Tagging vX.Y.Z (on main) tests and packs GlyphAura, pushes it to nuget.org (the secret NUGET_API_KEY; a tag run without it fails), and attaches it to a GitHub release.
+# Run by hand (Actions, Release, Run workflow) it is a dry run: the same tests, pack and smoke test, the package uploaded as an artifact, and nothing published.
+# FSharp.Graphics.Host of fsharp-wasm-graphics names this package by the version it was built with, so a release is tagged here with the same version as there.
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    tags: ["v*"]
+  workflow_dispatch:
 
 permissions:
   contents: write
-  packages: write
 
 jobs:
   release:
-    name: Publish NuGet & GitHub Release
     runs-on: ubuntu-latest
+    env:
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}   # job level, so `if: env.NUGET_API_KEY` below can see it
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
-      - name: Setup .NET 10
-        uses: actions/setup-dotnet@v5
+      - name: The version, and that a tag is a release of main
+        id: version
+        run: |
+          if [[ "$GITHUB_REF_TYPE" == tag ]]; then
+            [[ "$GITHUB_REF_NAME" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]] || { echo "::error::$GITHUB_REF_NAME is not vX.Y.Z or vX.Y.Z-suffix"; exit 1; }
+            git merge-base --is-ancestor "$GITHUB_SHA" origin/main || { echo "::error::$GITHUB_REF_NAME is not on main: a release is tagged on main"; exit 1; }
+            echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=0.0.0-dryrun.${GITHUB_RUN_NUMBER}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '10.0.x'
 
-      - name: Get version from tag
-        id: version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> "$GITHUB_OUTPUT"
-
-      - name: Restore
-        run: dotnet restore
-
-      - name: Build
-        run: dotnet build --no-restore --configuration Release -p:Version=${{ steps.version.outputs.VERSION }}
-
-      - name: Test
-        run: dotnet test tests/GlyphAura.Tests/GlyphAura.Tests.fsproj --no-build --configuration Release --verbosity normal
+      - name: Tests
+        run: dotnet test tests/GlyphAura.Tests/GlyphAura.Tests.fsproj -c Release -p:Version=${{ steps.version.outputs.version }}
 
       - name: Pack
-        run: dotnet pack src/GlyphAura/GlyphAura.fsproj --no-build --configuration Release -p:Version=${{ steps.version.outputs.VERSION }} --output ./nupkg
+        run: bash build/pack.sh "${{ steps.version.outputs.version }}"
 
-      - name: Publish to NuGet.org
-        run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      - name: Smoke test (the package as a new project restores it)
+        run: bash build/smoke-pack.sh "${{ steps.version.outputs.version }}"
 
-      - name: Publish to GitHub Packages
-        run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
+      - uses: actions/upload-artifact@v7
+        with:
+          name: nuget-packages
+          path: dist/nupkg/*.nupkg
 
-      - name: Create GitHub Release
+      # A release that publishes nothing is a failed release: without the key a tag run stops here, red, before anything is pushed or released.
+      - name: The key for nuget.org is there
+        if: github.ref_type == 'tag' && env.NUGET_API_KEY == ''
+        run: |
+          echo "::error::the secret NUGET_API_KEY is not visible to this repository: an organisation secret has to be given access to fsharp-glyph-aura"
+          exit 1
+
+      # --skip-duplicate: a run that is repeated after a half-way failure pushes only what is missing.
+      - name: Push to nuget.org
+        if: github.ref_type == 'tag'
+        run: dotnet nuget push "dist/nupkg/*.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: GitHub release
+        if: github.ref_type == 'tag'
         uses: softprops/action-gh-release@v3
         with:
-          files: ./nupkg/*.nupkg
           generate_release_notes: true
-          draft: false
-          prerelease: ${{ contains(steps.version.outputs.VERSION, '-') }}
+          prerelease: ${{ contains(github.ref_name, '-') }}   # v0.2.0-preview, v1.0.0-rc.1 …
+          files: dist/nupkg/*.nupkg
