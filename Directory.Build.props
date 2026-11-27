@@ -1,10 +1,9 @@
 <Project>
   <PropertyGroup>
     <!-- Shared NuGet / build metadata for all projects -->
-    <Authors>Glyph-Auro Contributors</Authors>
-    <Company>Glyph-Auro</Company>
+    <Authors>The fsharp-wasm contributors</Authors>
     <Product>GlyphAura</Product>
-    <Copyright>Copyright © 2025 Glyph-Auro Contributors</Copyright>
+    <Copyright>Copyright 2026 The fsharp-wasm contributors</Copyright>
     <RepositoryUrl>https://github.com/fsharp-wasm/fsharp-glyph-aura</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>

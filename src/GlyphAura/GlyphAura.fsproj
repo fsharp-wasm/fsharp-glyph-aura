@@ -21,7 +21,9 @@
 
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
-    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE;..\..\NOTICE" Pack="true" PackagePath="\" />
+    <!-- the sources too: a program compiled by fsharp-wasm compiles the libraries it uses together with its own code (the dll is for .NET) -->
+    <Content Include="*.fsproj;**/*.fs" Exclude="obj/**;bin/**" Pack="true" PackagePath="fable/" />
   </ItemGroup>
 
   <ItemGroup>
